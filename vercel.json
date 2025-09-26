@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "name": "xhj",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/validate.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/manage.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/simple-cron.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/validate.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/validate.js"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/simple-cron",
+      "schedule": "0 */3 * * *"
+    }
+  ]
+}
