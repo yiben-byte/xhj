@@ -11,7 +11,7 @@
         
         // 如果是根路径，显示拒绝页面
         if (path === '/' || path === '') {
-            document.write(`
+            document.documentElement.innerHTML = `
                 <!DOCTYPE html>
                 <html lang="zh-CN">
                 <head>
@@ -68,7 +68,7 @@
         }
         // 如果是无效路径，显示过期页面
         else if (!validPaths.includes(path.replace('/', ''))) {
-            document.write(`
+            document.documentElement.innerHTML = `
                 <!DOCTYPE html>
                 <html lang="zh-CN">
                 <head>
