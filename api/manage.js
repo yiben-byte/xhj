@@ -19,6 +19,7 @@ export default function handler(req, res) {
       return res.status(400).json({ error: '路径不能为空' });
     }
     
+    // 调用validate.js中的函数，确保使用同一个内存存储
     addValidPath(path, duration);
     
     return res.status(200).json({
