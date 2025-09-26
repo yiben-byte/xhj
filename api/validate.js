@@ -44,7 +44,7 @@ export default function handler(req, res) {
   cleanExpiredPaths();
   
   // 如果是根路径，显示无效页面
-  if (path === '') {
+  if (pathname === '/' || path === '') {
     return res.status(404).send(`
       <!DOCTYPE html>
       <html lang="zh-CN">
