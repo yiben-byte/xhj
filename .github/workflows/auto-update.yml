@@ -1,0 +1,23 @@
+name: 自动更新链接
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # 每3小时运行一次
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  update-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 生成新链接
+        run: |
+          # 生成随机路径
+          NEW_PATH=$(openssl rand -hex 16)
+          echo "新路径: $NEW_PATH"
+          
+          # 调用API激活新路径
+          curl -X POST https://xhj-share.vercel.app/api/manage \
+            -H "Content-Type: application/json" \
+            -d "{\"path\": \"$NEW_PATH\", \"duration\": 10800000}"
+          
+          # 输出新链接
+          echo "✅ 新链接: https://xhj-share.vercel.app/$NEW_PATH"
