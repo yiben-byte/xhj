@@ -1,25 +1,28 @@
 {
   "version": 2,
   "name": "xhj",
-  "functions": {
-    "api/validate.js": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "api/validate.js",
+      "use": "@vercel/node"
     },
-    "api/manage.js": {
-      "runtime": "nodejs18.x"
+    {
+      "src": "api/manage.js",
+      "use": "@vercel/node"
     },
-    "api/simple-cron.js": {
-      "runtime": "nodejs18.x"
+    {
+      "src": "api/simple-cron.js",
+      "use": "@vercel/node"
     }
-  },
-  "rewrites": [
+  ],
+  "routes": [
     {
-      "source": "/",
-      "destination": "/api/validate"
+      "src": "/",
+      "dest": "/api/validate"
     },
     {
-      "source": "/(.*)",
-      "destination": "/api/validate"
+      "src": "/(.*)",
+      "dest": "/api/validate"
     }
   ],
   "crons": [
