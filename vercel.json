@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "name": "xhj",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/validate.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/api/validate.js"
+    },
+    {
+      "src": "/api/validate",
+      "dest": "/api/validate.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/validate.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ]
+}
