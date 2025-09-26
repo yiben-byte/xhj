@@ -3,10 +3,6 @@
   "name": "xhj",
   "builds": [
     {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
       "src": "api/validate.js",
       "use": "@vercel/node"
     },
