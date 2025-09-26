@@ -1,20 +1,17 @@
 {
   "version": 2,
   "name": "xhj",
-  "builds": [
-    {
-      "src": "api/validate.js",
-      "use": "@vercel/node"
+  "functions": {
+    "api/validate.js": {
+      "runtime": "nodejs18.x"
     },
-    {
-      "src": "api/manage.js",
-      "use": "@vercel/node"
+    "api/manage.js": {
+      "runtime": "nodejs18.x"
     },
-    {
-      "src": "api/simple-cron.js",
-      "use": "@vercel/node"
+    "api/simple-cron.js": {
+      "runtime": "nodejs18.x"
     }
-  ],
+  },
   "rewrites": [
     {
       "source": "/",
