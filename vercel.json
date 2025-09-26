@@ -22,11 +22,11 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/api/validate.js"
+      "destination": "/api/validate"
     },
     {
       "source": "/(.*)",
-      "destination": "/api/validate.js"
+      "destination": "/api/validate"
     }
   ],
   "crons": [
