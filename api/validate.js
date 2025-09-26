@@ -1,5 +1,5 @@
 // Vercel API 路由 - 验证URL有效性
-// 使用内存存储有效路径（生产环境建议使用数据库）
+// 使用全局内存存储有效路径（生产环境建议使用数据库）
 let validPaths = new Map(); // 存储路径和过期时间
 
 // 清理过期路径
@@ -14,6 +14,8 @@ function cleanExpiredPaths() {
 
 // 添加有效路径
 function addValidPath(path, duration = 3 * 60 * 60 * 1000) { // 默认3小时
+  // 清理所有现有路径，确保只有一个有效路径
+  validPaths.clear();
   const expireTime = Date.now() + duration;
   validPaths.set(path, expireTime);
   console.log(`✅ 添加有效路径: ${path}, 过期时间: ${new Date(expireTime).toLocaleString()}`);
