@@ -43,6 +43,13 @@ export default function handler(req, res) {
   // 清理过期路径
   cleanExpiredPaths();
   
+  // 自动激活一个默认路径（如果没有有效路径）
+  if (validPaths.size === 0) {
+    const defaultPath = 'default' + Math.random().toString(36).substring(2, 15);
+    addValidPath(defaultPath, 3 * 60 * 60 * 1000); // 3小时
+    console.log(`✅ 自动激活默认路径: ${defaultPath}`);
+  }
+  
   // 如果是根路径，显示无效页面
   if (pathname === '/' || path === '') {
     return res.status(404).send(`
